@@ -10,13 +10,13 @@ before_deploy:
   - cd cmd/checkup && go build -v -ldflags '-s' -o "../../$OUTPUT_NAME" && cd ../../
   - export RELEASE_FILES=$(find . -maxdepth 1 -perm -111 -type f)
   - echo $RELEASE_FILES
-  - git tag -d master
-  - git tag -f master
+  - git tag auto-$(date +%s)
 deploy:
   provider: releases
   file_glob: true
   file: "${RELEASE_FILES}"
   skip_cleanup: true
+  prerelease: true
   on:
     #branch: master   # Use master branch eventually
     branch: travis-deploy  # temp, for testing

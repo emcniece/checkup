@@ -6,9 +6,11 @@ before_deploy:
   #- export TRAVIS_TAG=${TRAVIS_TAG:-$(date +'%Y%m%d%H%M%S')-$(git log --format=%h -1)}
   #- git tag $TRAVIS_TAG
   - export OUTPUT_NAME=checkup-$(uname -s)-$(uname -m)
+  - echo $OUTPUT_NAME
   - cd cmd/checkup && go build -v -ldflags '-s' -o "../../$OUTPUT_NAME" && cd ../../
   - export RELEASE_FILES=$(find . -maxdepth 1 -perm -111 -type f)
-  - git tag -fa master
+  - echo $RELEASE_FILES
+  - git tag -f master
 deploy:
   provider: releases
   file_glob: true

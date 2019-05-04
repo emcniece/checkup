@@ -14,14 +14,13 @@ if [ -z "$1" ]; then
   exit 1
 fi
 
+echo Building platform \"$1\" ...
+
 mkdir -p ./builds/
 pushd ./cmd/checkup/ > /dev/null 2>&1
 
 OS=$(echo $1 | cut -d'_' -f1)
 ARCH=$(echo $1 | cut -d'_' -f2)
-
-echo Building platform \"$1\" ...
-
-GOOS=$OS GOARCH=$ARCH go build -v -ldflags '-s' -o "../../builds/checkup_$1" 2>&1 >/dev/null
+GOOS=$OS GOARCH=$ARCH go build -v -ldflags '-s' -o "../../builds/checkup_$1" > /dev/null 2>&1
 
 popd > /dev/null 2>&1

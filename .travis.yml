@@ -10,6 +10,7 @@ before_deploy:
   - cd cmd/checkup && go build -v -ldflags '-s' -o "../../$OUTPUT_NAME" && cd ../../
   - export RELEASE_FILES=$(find . -maxdepth 1 -perm -111 -type f)
   - echo $RELEASE_FILES
+  - git tag -d master
   - git tag -f master
 deploy:
   provider: releases

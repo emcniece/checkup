@@ -1,7 +1,7 @@
 language: go
 before_deploy:
   - cat PLATFORMS | xargs -L 1 -P 8 ./build-cross.sh
-  - export RELEASE_FILES=$(find ./builds/ | grep checkup_freebsd_386)
+  - export RELEASE_FILES=$(find ./builds/)
   - echo $RELEASE_FILES
   - export TRAVIS_TAG=${TRAVIS_TAG:-$(date +'%Y%m%d%H%M%S')-$(git log --format=%h -1)}
   - git tag $TRAVIS_TAG

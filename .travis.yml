@@ -7,7 +7,8 @@ before_deploy:
   #- git tag $TRAVIS_TAG
   - cd cmd/checkup && go build -v -ldflags '-s' -o ../../checkup && cd ../../
   - export RELEASE_FILES=$(find . -maxdepth 1 -perm -111 -type f)
-  - git tag master
+  - echo "Deploying files: $RELEASE_FILES"
+  - git tag -fa master
 deploy:
   provider: releases
   file_glob: true

@@ -5,12 +5,14 @@ before_deploy:
   #- git config --local user.email "YOUR GIT USER EMAIL"
   #- export TRAVIS_TAG=${TRAVIS_TAG:-$(date +'%Y%m%d%H%M%S')-$(git log --format=%h -1)}
   #- git tag $TRAVIS_TAG
+  - git tag master-deploy
 deploy:
   provider: releases
   file: checkup
   skip_cleanup: true
   on:
-    branch: master
+    #branch: master   # Use master branch eventually
+    branch: travis-deploy  # temp, for testing
     #tags: true
   api_key:
     secure: "XCWKmXeQYORvGfzKn8nTql3YRJBLhItB6M7FF3Ym4GLbvIymj7zyUAoDiWPdBM1bS0aPPhIEbYFMusGgrCAAlrlD95WRKUOYd9k+XwOQtBMGu7H9GR0w0QiD4CMkUMS755aJt+752PwEk/5enWZ1lYweq/Kahpk84L+ZgM9g1KEbtirEbU1VgRRCh0huLMTjaSleS/7fxiPJ3d2Ah5vGc7kORH1DY3qFCun5LtvyEhEkXShTxW9iMvBVMgSahFZkoBnFX9rCQtPSVpTay4oiWz4dusrmT9aZc50ed1DawvAiLP/EPqzMZzjvJ8HzRm86wautzZTvEwFmk28e1fmS4FYtXYaa8t22tVIdBGErn7AlP49QPENsL7lPSCAqdpCqpCskHgo6RX9V8nyUjmzZKKQHnH8HJJaGlbJCB2zzwiqaXgzdepGmOn2hujlN6rWh4GQlw9Sx+ZI2Oxj0WHi0rjxpmbmbs7wPyCXQa/fmdMxt5fO8oMmb0VZzcJ3Im6HmMmnNTBsYqU1FKScgQMH2nMhMdwsAvrF5oykPoe2MF+c4evt00qeCFmc5aUVJCO2GCrQta+0yFOgOS2cxkiNnh+MjJURE7dKUbIxjYAU8yeIEkaCtK/9GF1JMKkfUnqkZsWfUaKk/h5hhA7wiSzyAbI1xDOlP4CoOZVDVarscgQE="

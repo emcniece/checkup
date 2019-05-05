@@ -23,4 +23,5 @@ OS=$(echo $1 | cut -d'_' -f1)
 ARCH=$(echo $1 | cut -d'_' -f2)
 GOOS=$OS GOARCH=$ARCH go build -v -ldflags '-s' -o "../../builds/checkup_$1" > /dev/null 2>&1
 
+echo Completed platform \"$1\"
 popd > /dev/null 2>&1

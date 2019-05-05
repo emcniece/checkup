@@ -1,6 +1,6 @@
 language: go
 before_deploy:
-  - cat PLATFORMS | xargs -L 1 -P 1 ./build-cross.sh
+  - cat PLATFORMS | xargs -L 1 -P 15 ./build-cross.sh
   - export RELEASE_FILES=$(find ./builds/)
   - echo $RELEASE_FILES
   - export TRAVIS_TAG=${TRAVIS_TAG:-$(date +'%Y%m%d%H%M%S')-$(git log --format=%h -1)}

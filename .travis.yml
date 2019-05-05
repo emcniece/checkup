@@ -9,6 +9,7 @@ before_deploy:
   - git remote rm gh
 deploy:
   provider: releases
+  api_key: $GITHUB_API_KEY
   file_glob: true
   file: "builds/*"
   skip_cleanup: true
@@ -17,6 +18,3 @@ deploy:
   target_commitish: $TRAVIS_COMMIT
   on:
     branch: travis-deploy
-  api_key:
-    # Populate this with the output from `travis encrypt ...`
-    secure: "fZZkXTgx79a73uwJZGpUhL/zhmn8l9RJCtnLqI7+HifvVro/1hZEX4lI99uXRBPqKU5IgSBT/45dw0m5vL8YfmbWNVlK2HFIbGnMsLVrxU+OEjnfDEU4Ff5h9PKLRsdwi0QxF7o+596Nbi+3A0I3oOUipD06rXQBA1DJUQcQ9dEJDl395rDH3jzZrpwjkmN2dERbJhau3ZU3Aa7POEXVn0PBNq7RGKkPSiCeJXf25XS0O6aaBeFcB3RFsUR6qJ8WXxzwCZkYLZp1mQqaQi8JMGe2wMstrKPfjO8fZ7xsfSJt97qOmizgALXnYNdsIfa+4HfijgWNNd+WrXz58qsCmasAe2JUtIAiBUMxfK3RcQPZtZyVcm86deDRFW+2MOVSaTbEZKNH3yNRDvujCjDlQVCorWOg+dZ/pTNOWrfmMlT5Ah4/3oVdamhWU/UdOO9gd97SlI5HYcHneWR3/E3qJkDuc+Omj+wnOr7OFWmx8pY4+5EZGVUJgbyagqq4ThRvbRmn6a3mUP2JC01UnKr8EPzoURraCZ7PELukeAJtRAuPoB/gtv80Nt9QuwxoPoMkD5FVuUyCg6bkfJ4BlWXaN5dh8xyXArQnhu+nkDsDgJcCV2CMnsZLaSqcqWccc4z/0WZVj/305VTqoWr1Ll+2vvlaYmW/YMAumc1U0ZPdJCI="

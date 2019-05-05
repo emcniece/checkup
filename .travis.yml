@@ -1,9 +1,11 @@
 language: go
+if: NOT tag = master-auto
 before_deploy:
   - cat PLATFORMS | xargs -L 1 -P 15 ./build-cross.sh
-  - git tag -f master-auto
   - git remote add gh https://${GITHUB_API_KEY}@github.com/${TRAVIS_REPO_SLUG}.git
-  - git push gh --tags
+  - git fetch gh --tags
+  - git tag -f master-auto
+  - git push gh --tags -f
   - git remote rm gh
 deploy:
   provider: releases

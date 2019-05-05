@@ -1,6 +1,6 @@
 <img src="https://i.imgur.com/UWhSoQj.png" width="450" alt="Checkup">
 
-[![GoDoc](https://img.shields.io/badge/godoc-reference-blue.svg?style=flat-square)](https://godoc.org/github.com/sourcegraph/checkup) [![Sourcegraph](https://sourcegraph.com/github.com/sourcegraph/checkup/-/badge.svg)](https://sourcegraph.com/github.com/sourcegraph/checkup?badge)
+[![GoDoc](https://img.shields.io/badge/godoc-reference-blue.svg?style=flat-square)](https://godoc.org/github.com/sourcegraph/checkup) [![Sourcegraph](https://sourcegraph.com/github.com/sourcegraph/checkup/-/badge.svg)](https://sourcegraph.com/github.com/sourcegraph/checkup?badge) [![TravisCI](https://api.travis-ci.org/sourcegraph/checkup.svg?branch=master)](https://travis-ci.org/sourcegraph/checkup/)
 
 
 **Checkup is distributed, lock-free, self-hosted health checks and status pages, written in Go.**
@@ -514,3 +514,7 @@ ls -al builds/
 # checkup_openbsd_amd64
 # checkup_solaris_amd64
 ```
+
+### Builds via Travis CI
+
+Automated builds happen in [Travis CI](https://travis-ci.org/sourcegraph/checkup/) each time `master` branch is updated. See the latest prerelease at [sourcegraph/checkup/releases](https://github.com/sourcegraph/checkup/releases).

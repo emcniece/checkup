@@ -6,7 +6,7 @@ before_deploy:
   #- export TRAVIS_TAG=${TRAVIS_TAG:-$(date +'%Y%m%d%H%M%S')-$(git log --format=%h -1)}
   #- git tag $TRAVIS_TAG
   - git tag -f master-auto
-  - git remote add gh https://${TRAVIS_REPO_SLUG%/*}:${GITHUB_API_KEY_WRITE}@github.com/${TRAVIS_REPO_SLUG}.git
+  - git remote add gh https://${GITHUB_API_KEY}@github.com/${TRAVIS_REPO_SLUG}.git
   - git remote -v
   - printenv
   - git push gh --tags

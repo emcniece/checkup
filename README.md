@@ -484,3 +484,33 @@ docker run --net=host --rm \
 ```
 
 This will create a checkup binary in the root project folder.
+
+### Building with the Cross-Compiler
+
+Alternative operating systems and architectures can be built using the [build-cross.sh](./build-cross.sh) script which will output binaries to `./builds/`. The build target can be passed in an `[OS]_[ARCH]` format:
+
+```sh
+./build-cross.sh linux_amd64
+./build-cross.sh freebsd_386
+
+ls -al builds/
+# checkup_freebsd_386
+# checkup_linux_amd64
+```
+
+Multiple platforms can be built in parallel by sending the contents of [PLATFORMS](./PLATFORMS) to the [build-cross.sh](./build-cross.sh) script:
+
+```sh
+# -P 15 : run a max of 15 processes simultaneously
+cat PLATFORMS | xargs -L 1 -P 15 ./build-cross.sh
+
+ls -al builds/
+# checkup_freebsd_386
+# checkup_freebsd_amd64
+# checkup_linux_386
+# checkup_linux_amd64
+# checkup_linux_arm64
+# checkup_openbsd_386
+# checkup_openbsd_amd64
+# checkup_solaris_amd64
+```

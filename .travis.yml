@@ -1,14 +1,8 @@
 language: go
 before_deploy:
   - cat PLATFORMS | xargs -L 1 -P 15 ./build-cross.sh
-  - export RELEASE_FILES=$(find ./builds/)
-  - echo $RELEASE_FILES
-  #- export TRAVIS_TAG=${TRAVIS_TAG:-$(date +'%Y%m%d%H%M%S')-$(git log --format=%h -1)}
-  #- git tag $TRAVIS_TAG
   - git tag -f master-auto
   - git remote add gh https://${GITHUB_API_KEY}@github.com/${TRAVIS_REPO_SLUG}.git
-  - git remote -v
-  - printenv
   - git push gh --tags
   - git remote rm gh
 deploy:
@@ -22,6 +16,5 @@ deploy:
   on:
     #branch: master   # Use master branch eventually
     branch: travis-deploy  # temp, for testing
-    #tags: true
   api_key:
     secure: "fZZkXTgx79a73uwJZGpUhL/zhmn8l9RJCtnLqI7+HifvVro/1hZEX4lI99uXRBPqKU5IgSBT/45dw0m5vL8YfmbWNVlK2HFIbGnMsLVrxU+OEjnfDEU4Ff5h9PKLRsdwi0QxF7o+596Nbi+3A0I3oOUipD06rXQBA1DJUQcQ9dEJDl395rDH3jzZrpwjkmN2dERbJhau3ZU3Aa7POEXVn0PBNq7RGKkPSiCeJXf25XS0O6aaBeFcB3RFsUR6qJ8WXxzwCZkYLZp1mQqaQi8JMGe2wMstrKPfjO8fZ7xsfSJt97qOmizgALXnYNdsIfa+4HfijgWNNd+WrXz58qsCmasAe2JUtIAiBUMxfK3RcQPZtZyVcm86deDRFW+2MOVSaTbEZKNH3yNRDvujCjDlQVCorWOg+dZ/pTNOWrfmMlT5Ah4/3oVdamhWU/UdOO9gd97SlI5HYcHneWR3/E3qJkDuc+Omj+wnOr7OFWmx8pY4+5EZGVUJgbyagqq4ThRvbRmn6a3mUP2JC01UnKr8EPzoURraCZ7PELukeAJtRAuPoB/gtv80Nt9QuwxoPoMkD5FVuUyCg6bkfJ4BlWXaN5dh8xyXArQnhu+nkDsDgJcCV2CMnsZLaSqcqWccc4z/0WZVj/305VTqoWr1Ll+2vvlaYmW/YMAumc1U0ZPdJCI="

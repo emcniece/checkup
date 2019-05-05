@@ -7,6 +7,8 @@ before_deploy:
   #- git tag $TRAVIS_TAG
   - git tag -f master-auto
   - git remote add gh https://${TRAVIS_REPO_SLUG%/*}:${GITHUB_API_KEY_WRITE}@github.com/${TRAVIS_REPO_SLUG}.git
+  - git remote -v
+  - printenv
   - git push gh --tags
   - git remote rm gh
 deploy:

@@ -5,12 +5,10 @@ before_deploy:
   - echo $RELEASE_FILES
   #- export TRAVIS_TAG=${TRAVIS_TAG:-$(date +'%Y%m%d%H%M%S')-$(git log --format=%h -1)}
   #- git tag $TRAVIS_TAG
-  - printenv
   - git tag -f master-auto
   - git remote add gh https://${TRAVIS_REPO_SLUG%/*}:${GITHUB_API_KEY_WRITE}@github.com/${TRAVIS_REPO_SLUG}.git
-  - git remote -v
-  - git push --tags
-  - git remote remove gh
+  - git push gh --tags
+  - git remote rm gh
 deploy:
   provider: releases
   file_glob: true
